@@ -19,7 +19,7 @@ public class Simulator {
 
         Employee programmer = new Employee();
 
-        for (int period = 0; period < 4; period++) {
+        for (int period = 0; period < 20; period++) {
             tasks.add(generateJob());
 
             for (Task currentTask : tasks) {
@@ -31,11 +31,14 @@ public class Simulator {
 
             System.out.println("Result for period " + (period + 1));
             for (Task currentTask : tasks) {
-                if (currentTask.isDone()) {
-                    System.out.println("Task " + currentTask.getDescription() + " is done");
-                } else {
+                if (! currentTask.isDone()) {
                     System.out.println("Task " + currentTask.getDescription() + " is NOT done");
                 }
+            }
+            System.out.println("Happiness Index of our programmer: " + programmer.getHappinessIndex());
+            if (programmer.getHappinessIndex() <= 0) {
+                System.out.println ("PROGRAMMER has resigned; business stops in period " + (period + 1));
+                System.exit(0);
             }
         }
     }

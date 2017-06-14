@@ -10,9 +10,11 @@ public class Employee {
     public static final int ITERATIONS_PER_PERIOD = 8;
 
     private List<Task> tasks;
+    private int happinessIndex;
 
-    public Employee () {
+    public Employee() {
         this.tasks = new ArrayList<>();
+        this.happinessIndex = 10;
     }
 
     public void takeJob(Task task) {
@@ -22,7 +24,7 @@ public class Employee {
     public void worksOnJobs() {
         for (int i = 0; i < ITERATIONS_PER_PERIOD; i++) {
             List<Task> orderedTasks = tasks.stream().sorted(new JobComparator()).collect(Collectors.toList());
-            if (! orderedTasks.isEmpty()) {
+            if (!orderedTasks.isEmpty()) {
                 Task currentTask = orderedTasks.get(0);
                 currentTask.workOnJob();
                 if (currentTask.isDone()) {
@@ -30,21 +32,18 @@ public class Employee {
                 }
             }
         }
+        checkHappinessIndex();
     }
 
-  private class JobComparator implements Comparator<Task> {
-        public int compare(Task task1, Task task2) {
-            int answer;
-            float progress1 = task1.getProgress();
-            float progress2 = task2.getProgress();
-            if ( progress1 == progress2) {
-                answer = 0;
-            } else if (progress1 > progress2) {
-                answer = 1;
-            } else {
-                answer = -1;
-            }
-            return -1 * answer;
+    public int getHappinessIndex() {
+        return happinessIndex;
+    }
+
+    private void checkHappinessIndex() {
+        List jobsNotDone = tasks.stream().filter(task -> ! task.isDone()).collect(Collectors.toList());
+
+        if (! jobsNotDone.isEmpty()) {
+            happinessIndex--;
         }
     }
 }
