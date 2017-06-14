@@ -21,6 +21,10 @@ public class Employee {
         tasks.add(task);
     }
 
+    public int getNumberOfTasks() {
+        return tasks.size();
+    }
+
     public void worksOnJobs() {
         for (int i = 0; i < ITERATIONS_PER_PERIOD; i++) {
             List<Task> orderedTasks = tasks.stream().sorted(new JobComparator()).collect(Collectors.toList());
