@@ -2,6 +2,7 @@ package de.codecentric.simulation.tasks;
 
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Task {
 
@@ -23,7 +24,7 @@ public class Task {
     }
 
     public BigDecimal getProgress() {
-        return new BigDecimal(workDone).divide(new BigDecimal(duration));
+        return new BigDecimal(workDone).divide(new BigDecimal(duration), 2, RoundingMode.HALF_UP);
     }
 
     public boolean isDone() {
