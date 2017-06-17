@@ -1,5 +1,6 @@
-package de.codecentric.simulation;
+package de.codecentric.simulation.tasks;
 
+import de.codecentric.simulation.Task;
 
 import java.util.Comparator;
 
@@ -10,7 +11,7 @@ public class JobComparator implements Comparator<Task> {
         float progress2 = task2.getProgress();
         if ( progress1 == progress2) {
             answer = 0;
-        } else if (progress1 > progress2) {
+        } else if (progress1 < progress2) {
             answer = 1;
         } else {
             answer = -1;

@@ -1,5 +1,6 @@
 package de.codecentric.simulation
 
+import de.codecentric.simulation.tasks.ParallelizeTaskStrategy
 import spock.lang.Specification
 
 
@@ -8,7 +9,7 @@ class EmployeeTest extends Specification {
     private Employee employee
 
     def setup() {
-        employee = new Employee()
+        employee = new Employee(new ParallelizeTaskStrategy())
     }
 
     def "Initial happiness index is ten" () {

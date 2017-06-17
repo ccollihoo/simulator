@@ -1,20 +1,23 @@
 package de.codecentric.simulation;
 
+import de.codecentric.simulation.tasks.JobComparator;
+import de.codecentric.simulation.tasks.ParallelizeTaskStrategy;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class Employee {
     public static final int ITERATIONS_PER_PERIOD = 8;
-
+    private final ParallelizeTaskStrategy jobOrderStrategy;
     private List<Task> tasks;
     private int happinessIndex;
 
-    public Employee() {
+    public Employee(ParallelizeTaskStrategy jobOrderStrategy) {
         this.tasks = new ArrayList<>();
         this.happinessIndex = 10;
+        this.jobOrderStrategy = jobOrderStrategy;
     }
 
     public void takeJob(Task task) {
@@ -27,7 +30,7 @@ public class Employee {
 
     public void worksOnJobs() {
         for (int i = 0; i < ITERATIONS_PER_PERIOD; i++) {
-            List<Task> orderedTasks = tasks.stream().sorted(new JobComparator()).collect(Collectors.toList());
+            List<Task> orderedTasks = jobOrderStrategy.sortTasks(tasks);
             if (!orderedTasks.isEmpty()) {
                 Task currentTask = orderedTasks.get(0);
                 currentTask.workOnJob();

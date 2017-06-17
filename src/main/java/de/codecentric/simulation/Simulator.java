@@ -1,5 +1,7 @@
 package de.codecentric.simulation;
 
+import de.codecentric.simulation.tasks.ParallelizeTaskStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,7 +19,7 @@ public class Simulator {
         tasks.add(generateJob());
         tasks.add(generateJob());
 
-        Employee programmer = new Employee();
+        Employee programmer = new Employee(new ParallelizeTaskStrategy());
 
         for (int period = 0; period < 20; period++) {
             tasks.add(generateJob());
