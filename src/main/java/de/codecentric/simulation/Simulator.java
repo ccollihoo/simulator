@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by oliverhoogvliet on 14.06.17.
- */
+
 public class Simulator {
 
-    public static final Random rand = new Random();
+    private static final Random rand = new Random();
 
     public static void main(String[] args) {
         List<Task> tasks = new ArrayList<>();

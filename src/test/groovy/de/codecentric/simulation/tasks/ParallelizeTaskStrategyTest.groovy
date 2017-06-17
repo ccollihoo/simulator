@@ -17,19 +17,38 @@ class ParallelizeTaskStrategyTest extends Specification {
         orderedTasks ==  Collections.emptyList()
     }
 
-    def "When one job takes more time, it is handled later" () {
+    def "When one job has more progress, it is handled later" () {
         TaskOrderStrategy strategy = new ParallelizeTaskStrategy();
         List<Task> unorderedTasks = new ArrayList<>();
-        unorderedTasks.add(new Task(4));
-        unorderedTasks.add(new Task(2));
+        Task taskOne = new Task(2);
+        taskOne.workOnJob();
+        Task taskTwo = new Task(2);
+        unorderedTasks.add(taskOne);
+        unorderedTasks.add(taskTwo);
 
         when:
         List<Task> orderedTasks = strategy.sortTasks(unorderedTasks);
 
         then:
-        orderedTasks.get(0).duration == 2
-        orderedTasks.get(1).duration == 4
+        orderedTasks.get(0) == taskTwo
+        orderedTasks.get(1) == taskOne
 
+    }
+
+    def "When one job with same progress takes more time, it is handled later" () {
+        TaskOrderStrategy strategy = new ParallelizeTaskStrategy();
+        List<Task> unorderedTasks = new ArrayList<>();
+        Task taskOne = new Task(4);
+        Task taskTwo = new Task(2);
+        unorderedTasks.add(taskOne);
+        unorderedTasks.add(taskTwo);
+
+        when:
+        List<Task> orderedTasks = strategy.sortTasks(unorderedTasks);
+
+        then:
+        orderedTasks.get(0) == taskTwo
+        orderedTasks.get(1) == taskOne
     }
 
 

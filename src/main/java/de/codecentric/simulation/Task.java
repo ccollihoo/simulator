@@ -1,11 +1,13 @@
 package de.codecentric.simulation;
 
 
+import java.math.BigDecimal;
+
 public class Task {
 
     private int duration;
 
-    public int workDone;
+    private int workDone;
 
     public Task(int duration) {
         this.duration = duration;
@@ -20,8 +22,8 @@ public class Task {
         workDone++;
     }
 
-    public float getProgress() {
-        return workDone/duration;
+    public BigDecimal getProgress() {
+        return new BigDecimal(workDone).divide(new BigDecimal(duration));
     }
 
     public boolean isDone() {
