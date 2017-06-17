@@ -3,13 +3,17 @@ package de.codecentric.simulation;
 
 public class Task {
 
-    public int duration;
+    private int duration;
 
     public int workDone;
 
     public Task(int duration) {
         this.duration = duration;
         workDone = 0;
+    }
+
+    public int getDuration() {
+        return duration;
     }
 
     public void workOnJob() {
