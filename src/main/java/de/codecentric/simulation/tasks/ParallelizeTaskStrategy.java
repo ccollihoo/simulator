@@ -1,8 +1,5 @@
 package de.codecentric.simulation.tasks;
 
-import de.codecentric.simulation.Task;
-
-import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;

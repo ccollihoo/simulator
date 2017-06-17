@@ -1,6 +1,5 @@
 package de.codecentric.simulation.tasks
 
-import de.codecentric.simulation.Task
 import spock.lang.Specification
 
 

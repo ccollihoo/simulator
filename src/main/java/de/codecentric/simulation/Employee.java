@@ -1,5 +1,6 @@
 package de.codecentric.simulation;
 
+import de.codecentric.simulation.tasks.Task;
 import de.codecentric.simulation.tasks.TaskOrderStrategy;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package de.codecentric.simulation;
+package de.codecentric.simulation.tasks;
 
 
 import java.math.BigDecimal;

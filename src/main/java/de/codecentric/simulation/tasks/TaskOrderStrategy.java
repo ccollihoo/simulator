@@ -1,7 +1,5 @@
 package de.codecentric.simulation.tasks;
 
-import de.codecentric.simulation.Task;
-
 import java.util.List;
 
 

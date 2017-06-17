@@ -1,6 +1,7 @@
 package de.codecentric.simulation;
 
 import de.codecentric.simulation.tasks.ParallelizeTaskStrategy;
+import de.codecentric.simulation.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;

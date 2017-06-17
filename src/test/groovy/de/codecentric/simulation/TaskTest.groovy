@@ -1,5 +1,6 @@
 package de.codecentric.simulation
 
+import de.codecentric.simulation.tasks.Task
 import spock.lang.Specification
 
 class TaskTest extends Specification {
